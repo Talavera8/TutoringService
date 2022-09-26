@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <img src="../assets/images/unlockPotentialLock.jpg" alt="unlockYourPotential" class="card-img-top">
+            <div class="card-body">
+                <form [formGroup]="signupForm">
+                    <div class="row mb-2">
+                        <legend>User type:</legend>
+                        <div class="col-md-6">
+                            <div class="form-check form-check-inline">
+                                <input formControlName="userType" class="form-check-input" type="radio" value="tutor"
+                                    id="tutor" name="userType" checked>
+                                <label class="form-check-label" for="tutor">
+                                    Tutor
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input formControlName="userType" class="form-check-input" type="radio" value="student"
+                                    id="student" name="userType">
+                                <label class="form-check-label" for="student">
+                                    Student
+                                </label>
+                            </div>
+                            <div *ngIf="signupForm.controls.userType.errors" class="text-danger">
+                                <p *ngIf="signupForm.controls['userType'].errors?.required">You must select the type of
+                                    user you are!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="signupForm.controls.userType.value || mode=='edit'">
+                        <div class="row mb-2">
+                            <legend>Basic info</legend>
+                            <div class="col-md-4 form-group">
+                                <label for="first">First name</label>
+                                <input formControlName="firstName" type="text" class="form-control" id="first">
+                                <div *ngIf="signupForm.controls.firstName.touched && signupForm.controls.firstName.errors"
+                                    class="text-danger">
+                                    <p *ngIf="signupForm.controls['firstName'].errors?.required">This field is required!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="last">Last name</label>
+                                <input formControlName="lastName" type="text" class="form-control" id="last">
+                                <div *ngIf="signupForm.controls.lastName.touched && signupForm.controls.lastName.errors"
+                                    class="text-danger">
+                                    <p *ngIf="signupForm.controls['lastName'].errors?.required">This field is required!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="city">City</label>
+                                <input formControlName="city" type="text" class="form-control" id="city">
+                                <div *ngIf="signupForm.controls.city.touched && signupForm.controls.city.errors"
+                                    class="text-danger">
+                                    <p *ngIf="signupForm.controls['city'].errors?.required">This field is required!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div *ngIf="mode=='create'">
+                                <legend>Credentials</legend>
+                                <div class="col-md-5 form-group">
+                                    <label for="email">Email</label>
+                                    <input formControlName="email" type="email" class="form-control" id="email">
+                                    <div *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors"
+                                        class="text-danger">
+                                        <p *ngIf="signupForm.controls['email'].errors?.required">This field is required!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 form-group">
+                                    <label for="last">Password</label>
+                                    <input formControlName="password" type="password" class="form-control"
+                                        id="password">
+                                    <div *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors"
+                                        class="text-danger">
+                                        <p *ngIf="signupForm.controls['password'].errors?.required">This field is
+                                            required!
+                                        </p>
+                                        <p
+                                            *ngIf="signupForm.controls.password.dirty && signupForm.controls.password.errors?.passwordInvalid">
+                                            {{signupForm.controls['password'].errors?.passwordInvalid.message}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="signupForm.controls.userType.value == 'tutor'">
+                            <div class="row mb-2">
+                                <legend>Your service</legend>
+                                <div class="col-md-3 form-group">
+                                    <label for="rate">Hourly rate</label>
+                                    <input formControlName="hourlyRate" type="number" min="10" max="50" step=".50"
+                                        class="form-control" id="rate">
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label>Choose a subject</label>
+                                    <select formControlName="subject" multiple class="form-select">
+                                        <option value="Algebra">Algebra</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Geometry">Geometry</option>
+                                        <option value="Calculus">Calculus</option>
+                                        <option value="Writing">Writing</option>
+                                        <option value="Grammar">Grammar</option>
+                                        <option value="Reading">Reading</option>
+                                    </select>
+                                </div>
+                                <p style="color: red;" *ngIf="subjectRequiredMessage">{{subjectRequiredMessage}}</p>
+                                <div class="col-md-6 form-group">
+                                    <label for="photo">Upload profile photo</label>
+                                    <input formControlName="profilePhoto" type="file" class="form-control" id="photo">
+                                </div>
+                            </div>
+                            <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple subjects.</p>
+                            <div class="row mb-4 form-group">
+                                <div class="col-md-7">
+                                    <label for="bio">Biography</label>
+                                    <textarea formControlName="biography" row="8" max="250" class="form-control"
+                                        id="bio"></textarea>
+                                </div>
+                            </div>
+                            <p style="color: red; margin-bottom: 15px;" *ngIf="requiredMessage">{{requiredMessage}}</p>
+                        </div>
+                        <button type="submit" (click)="signup()" class="btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

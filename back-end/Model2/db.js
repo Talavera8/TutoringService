@@ -1,0 +1,1 @@
+// fake database: 2 arrays, one for users, one for requests

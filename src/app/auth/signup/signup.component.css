@@ -1,0 +1,25 @@
+.card {
+    padding: 10px;
+}
+
+img {
+    height: 200px;
+}
+
+button, button:hover{
+    background-color: rgba(38, 144, 214, 0.959);
+    color: white;
+}
+
+.form-check-input:checked {
+    background-color: rgba(38, 144, 214, 0.959);
+}
+
+p {
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+/* .card-body {
+    background-color: rgba(255, 255, 255, 0.616);
+} */

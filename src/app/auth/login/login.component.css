@@ -1,0 +1,8 @@
+button, button:hover {
+    background-color: rgba(38, 144, 214, 0.959);
+    color: white;
+}
+
+img {
+    height: 200px;
+}

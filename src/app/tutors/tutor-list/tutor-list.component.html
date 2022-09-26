@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
+          <th scope="col">City</th>
+          <th scope="col">Email</th>
+          <th scope="col">Subject(s)</th>
+          <th scope="col">Hourly rate</th>
+          <th scope="col">Learn more</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>{{u.firstName}}</td>
+          <td>{{u.lastName}}</td>
+          <td>{{u.city}}</td>
+          <td>{{u.email}}</td>
+          <td>
+            <span *ngFor="let s of u.subject">
+               <td>{{s}}&nbsp;</td>
+            </span>
+          </td>
+          <td>${{u.hourlyRate}}</td>
+          <td>
+            <mat-expansion-panel hideToggle style="width: 275px;">
+              <mat-expansion-panel-header>
+                <mat-panel-title style="margin-bottom: 10px;">
+                  Biography
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>profile img here</p>
+              <p style="width: 250px;">{{u.biography}}</p>
+            </mat-expansion-panel>
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-2">
+                <button type="button" class="btn" (click)="editUser(u)">Edit</button> 
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn" (click)="deleteUser(u.userId)">Delete</button>
+              </div>
+              <div *ngIf="userType==='student'" class="col-md-3">
+                <button type="button" class="btn">Contact</button>
+              </div>
+            </div>
+            <!--<button><a [routerLink]="['/edit', u.userId]"></a></button> -->           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+
+.nav-link {
+    color: rgba(123, 191, 231, 0.959);
+}
+
+a:hover {
+    color: white;
+}
+
+.navbar-toggler {
+    color: rgba(123, 191, 231, 0.959);
+}
+
+a {
+    color: rgba(123, 191, 231, 0.959);
+}
+
+.navbar {
+    margin-bottom: 30px;
+}
+
+.btn{
+    color: rgba(123, 191, 231, 0.959);    
+}

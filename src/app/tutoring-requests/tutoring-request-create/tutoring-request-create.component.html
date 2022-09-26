@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 style="text-align: center" class="card-title">Tutoring Service Request</h2>
+                <form [formGroup]="requestForm">
+                    <div class="row mb-4">
+                        <div class="col-md-4 form-group">
+                            <label for="date">Today's date</label>
+                            <input formControlName="date" type="date" class="form-control" id="date">
+                            <div *ngIf="requestForm.controls.date.touched && requestForm.controls.date.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['date'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-4 form-group">
+                            <label for="first">First name</label>
+                            <input formControlName="firstName" type="text" class="form-control" id="first">
+                            <div *ngIf="requestForm.controls.firstName.touched && requestForm.controls.firstName.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['firstName'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="last">Last name</label>
+                            <input formControlName="lastName" type="text" class="form-control" id="last">
+                            <div *ngIf="requestForm.controls.lastName.touched && requestForm.controls.lastName.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['lastName'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="city">City</label>
+                            <input formControlName="city" type="text" class="form-control" id="city">
+                            <div *ngIf="requestForm.controls.city.touched && requestForm.controls.city.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['city'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-3 form-group">
+                            <label>Subject (only one)</label>
+                            <select formControlName="subject" class="form-select">
+                                <option value="Algebra">Algebra</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Geometry">Geometry</option>
+                                <option value="Calculus">Calculus</option>
+                                <option value="Writing">Writing</option>
+                                <option value="Grammar">Grammar</option>
+                                <option value="Reading">Reading</option>
+                            </select>
+                            <div *ngIf="requestForm.controls.subject.touched && requestForm.controls.subject.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['subject'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>Time frame (only one)</label>
+                            <select formControlName="timeFrame" class="form-select">
+                                <option value="immediately">immediately</option>
+                                <option value="this week">this week</option>
+                                <option value="next week">next week</option>
+                            </select>
+                            <div *ngIf="requestForm.controls.timeFrame.touched && requestForm.controls.timeFrame.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['timeFrame'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Availability <span style="font-size: 11px; color: red;">(hold ctrl to choose
+                                    multiple)</span></label>
+                            <select formControlName="availability" multiple class="form-select">
+                                <option value="mornings">mornings</option>
+                                <option value="during work hours">during work hours</option>
+                                <option value="evenings">evenings</option>
+                                <option value="weekends">weekends</option>
+                                <option value="flexible">flexible</option>
+                            </select>
+                            <div *ngIf="requestForm.controls.availability.touched && requestForm.controls.availability.errors"
+                                class="text-danger">
+                                <p *ngIf="requestForm.controls['availability'].errors?.required">This field is required!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" (click)="submitRequest()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

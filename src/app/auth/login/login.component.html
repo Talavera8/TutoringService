@@ -1,0 +1,27 @@
+<div class="row justify-content-center">
+    <div class="col-md-3">
+        <div class="card">
+            <img src="../assets/images/unlockPotentialLock.jpg" alt="unlockYourPotential" class="card-img-top">
+            <div class="card-body">
+                <form [formGroup]="loginForm">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors" class="text-danger">
+                            <p *ngIf="loginForm.controls['email'].errors?.required">This field is required!</p>
+                         </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input formControlName="password" type="password" class="form-control" id="password">
+                        <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors" class="text-danger">
+                            <p *ngIf="loginForm.controls['password'].errors?.required">This field is required!</p>
+                         </div>
+                    </div>
+                    <button type="submit" class="btn" (click)="login()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
